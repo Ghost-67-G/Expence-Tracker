@@ -1,18 +1,26 @@
-// import { useState } from "react";
-
-import { useSelector } from "react-redux";
-// import store from "../Store/Store";
+// import { useSelector } from "react-redux";
+import { useContext } from "react";
+import { GlobalContext } from "../Store/context";
 
 const Balance = () => {
   let currentBalance = 0;
   let expense = 0;
   let income = 0;
-  let transaction = useSelector((store) => store.balanceSection);
-  for (let item of transaction) {
-    currentBalance += +item.Amount;
-    if (item.Amount[0] === "-") {
-      expense -= +item.Amount;
+  let { transactions } = useContext(GlobalContext);
+  // let transaction = useSelector((store) => store.balanceSection);
+  for (let item of transactions) {
+    if (item.type=== "minus") {
+      if(currentBalance<+item.Amount*-1){
+        let index =transactions.indexOf(item)
+        transactions.splice(index,1)
+        // alert("Your current Balance is 0. So, you can't minus more value")
+      }else{
+        expense -= +item.Amount;
+        currentBalance += +item.Amount;
+      }
+      
     } else {
+      currentBalance += +item.Amount;
       income += +item.Amount;
     }
   }

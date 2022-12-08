@@ -1,7 +1,7 @@
 import { createStore, combineReducers } from "redux";
 
-
-function balanceSection(old = [], newData) {
+let data = [];
+function balanceSection(old = data, newData) {
   if (newData.type === "ADD_TRANSACTION") {
     old.push(newData.data);
   } else if (newData.type === "DELETE_TRANSACTION") {
