@@ -5,7 +5,7 @@ import { GlobalContext } from "../Store/context";
 
 const History = () => {
   // let dispatch = useDispatch();
-  let { transactions, delTransaction } = useContext(GlobalContext);
+  let { transactions,editTransaction, delTransaction } = useContext(GlobalContext);
   let setActive = false;
   // let data = useSelector((store) => store.balanceSection);
   return (
@@ -22,8 +22,7 @@ const History = () => {
           }
           return (
             <li className={setActive ? "history minus" : "plus history"}>
-              <div>
-                <button
+              <button className="LiBtn"
                   onClick={() => {
                     // dispatch({
                     //   type: "DELETE_TRANSACTION",
@@ -35,10 +34,16 @@ const History = () => {
                 >
                   X
                 </button>
+              <div>
                 {item.Desc}
               </div>{" "}
               <div>${item.Amount}</div>
               <div>{item.date}</div>
+              <button className="LiBtn Edit" onClick={()=>{
+                let Description = prompt("Enter the Description")
+                let Amount = prompt("Enter the amount")
+                editTransaction(item.id,Description,Amount)
+              }}>Edit</button>
             </li>
           );
         })}

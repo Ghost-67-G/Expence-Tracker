@@ -29,11 +29,11 @@ const AddTransaction = () => {
         <h3>Add New Transaction</h3>
       </div>
       <form onSubmit={Form.handleSubmit(transaction)}>
-        <h4>Description</h4>
+        <h4><u>Description</u></h4>
         <div>
           <input  {...Form.register("Desc",{required:true})} type="text" />
         </div>
-        <h4>Transaction Amount</h4>
+        <h4><u>Transaction Amount</u></h4>
         <div>
           <input {...Form.register("Amount",{required:true})} type="number" />
         </div>

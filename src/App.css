@@ -1,3 +1,6 @@
+*{
+  font-family: none;
+}
 body {
   display: flex;
   justify-content: center;
@@ -41,6 +44,7 @@ h2 {
   justify-content: space-between;
   align-items: center;
   width: 300px;
+  border: 1px solid black;
 }
 ul {
   padding: 0;
@@ -66,19 +70,22 @@ outline: none;
   width: 270px;
   font-size: large;
   height: 35px;
+  border-radius: 10px;
 }
 .minus {
-  border-right: 2px solid rgb(235, 99, 99);
+  border-right: 3px solid rgb(235, 99, 99);
   transition: background 0.5s linear 0s;
 }
 .plus {
-  border-right: 2px solid rgb(88, 179, 231);
+  border-right: 3px solid rgb(88, 179, 231);
   transition: background 0.5s linear 0s;
 }
 .minus:hover {
+  border-right:none ;
   background: rgb(235, 99, 99);
 }
 .plus:hover {
+  border-right:none ;
   background: rgb(88, 179, 231);
 }
 .red{
@@ -86,4 +93,30 @@ color: rgb(235, 99, 99);
 }
 .blue{
   color:rgb(88, 179, 231)
+}
+.LiBtn{
+background: none;
+border: none;
+width: 40px;
+height: 25px;
+font-size: large;
+color: rgb(30, 30, 30);
+background-color: rgb(255, 46,46);
+opacity: 0;
+transition: opacity 0.5s linear 0s;
+}
+.history:hover .LiBtn{
+  opacity: 1;
+}
+.Edit{
+  border: 1px solid black;
+  background-color: rgb(88, 179, 231);
+}
+ul{
+  background-color: gray;
+  min-height: 100px;
+  width: 304px;
+}
+.history:hover{
+  width: 303px;
 }

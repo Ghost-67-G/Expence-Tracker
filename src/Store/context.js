@@ -14,6 +14,17 @@ let AppReducer = (state, action) => {
         ...state,
         transactions: [...state.transactions,action.payload],
       };
+    case "EDIT_TRANSACTION":
+      // let ta = state.transaction.find((item)=>item.id===action.id)
+      let index = state.transactions.findIndex((item)=>item.id===action.id)
+      state.transactions[index].Desc = action.payload.desc
+      state.transactions[index].Amount = action.payload.amount
+      state.transactions[index].date = new Date().toLocaleDateString()
+      
+      return {
+        ...state,
+        transactions:[...state.transactions]
+      };
     default:
       return state;
   }
@@ -47,6 +58,16 @@ export const GlobalProvider = ({ children }) => {
       payload: transaction,
     });
   }
+  function editTransaction(id,desc,amount) {
+    dispatch({
+      type: "EDIT_TRANSACTION",
+      id:id,
+      payload: {
+        desc:desc,
+        amount:amount
+      },
+    });
+  }
 
   return (
     <GlobalContext.Provider
@@ -54,6 +75,7 @@ export const GlobalProvider = ({ children }) => {
         transactions: state.transactions,
         delTransaction,
         addTransaction,
+        editTransaction
       }}
     >
       {children}
