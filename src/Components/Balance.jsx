@@ -17,8 +17,7 @@ const Balance = () => {
       }else{
         expense -= +item.Amount;
         currentBalance += +item.Amount;
-      }
-      
+      } 
     } else {
       currentBalance += +item.Amount;
       income += +item.Amount;
@@ -32,11 +31,11 @@ const Balance = () => {
       <div className="BalanceShower">
         <div className="income">
           <h3>INCOME</h3>
-          <h2>{income}.00</h2>
+          <h2 className="blue">{income}.00</h2>
         </div>
         <div className="expense">
           <h3>EXPENSE</h3>
-          <h2>{expense}.00</h2>
+          <h2 className="red">{expense}.00</h2>
         </div>
       </div>
     </>

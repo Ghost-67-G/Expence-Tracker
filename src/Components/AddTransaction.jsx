@@ -9,7 +9,7 @@ const AddTransaction = () => {
   // let dispatch = useDispatch();
   let { addTransaction } = useContext(GlobalContext);
   const transaction = (obj) => {
-    let date = new Date().toLocaleString().split(",")[0]; // toDateString(); //toISOString().split("T")[0];
+    let date = new Date().toLocaleDateString();
     obj.date = date;
     obj.id = v4();
     if(obj.Amount[0]==="-"){
@@ -19,8 +19,8 @@ const AddTransaction = () => {
     }
     addTransaction(obj);
     // dispatch({
-    //   type: "ADD_TRANSACTION",
-    //   data: obj,
+      // type: "ADD_TRANSACTION",
+      // data: obj,
     // });
   };
   return (
@@ -31,7 +31,7 @@ const AddTransaction = () => {
       <form onSubmit={Form.handleSubmit(transaction)}>
         <h4>Description</h4>
         <div>
-          <input {...Form.register("Desc",{required:true})} type="text" />
+          <input  {...Form.register("Desc",{required:true})} type="text" />
         </div>
         <h4>Transaction Amount</h4>
         <div>
